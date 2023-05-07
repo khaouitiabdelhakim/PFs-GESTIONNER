@@ -30,3 +30,23 @@ The goal of this project is to design (using Merise) and develop a web applicati
   * A professor-administrator per program and level to launch the project, request proposal topics from professors, create an evaluation grid (with objectives rated from 1 to 5 for example), assign topics to students based on their choices, propose a schedule for candidate defenses, etc.
   * A professor to consult their account, propose topics, exchange with students (requesting work with deadlines), receive reports, propose grades according to the grid proposed after the defense, etc.
   * A student to create and consult their account, fill out choices based on the proposals of professors, implement required work, exchange with the supervising professor, upload the required report and documents, view the schedule for the defense.
+
+
+How does it work ?
+
+```
+git clone https://github.com/khaouitiabdelhakim/Final-Project.git
+
+composer install
+
+copy .env.example .env
+
+php artisan key:generate
+
+php artisan migrate
+ 
+php artisan serve
+
+Go to link localhost:8000
+
+```
