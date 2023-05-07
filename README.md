@@ -32,7 +32,7 @@ The goal of this project is to design (using Merise) and develop a web applicati
   * A student to create and consult their account, fill out choices based on the proposals of professors, implement required work, exchange with the supervising professor, upload the required report and documents, view the schedule for the defense.
 
 
-How does it work ?
+## How does it work ?
 
 ```
 git clone https://github.com/khaouitiabdelhakim/Final-Project.git
