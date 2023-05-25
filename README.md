@@ -37,6 +37,8 @@ The goal of this project is to design (using Merise) and develop a web applicati
 ```
 git clone https://github.com/khaouitiabdelhakim/Final-Project.git
 
+cd Final-Project
+
 composer install
 
 copy .env.example .env
@@ -47,6 +49,6 @@ php artisan migrate
  
 php artisan serve
 
-Go to link localhost:8000
-
 ```
+
+then Go to link localhost:8000
