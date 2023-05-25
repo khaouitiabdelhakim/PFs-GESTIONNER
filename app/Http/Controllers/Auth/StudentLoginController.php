@@ -48,7 +48,7 @@ class StudentLoginController extends Controller
      */
     protected function authenticated(Request $request, $student) 
     {
-        return view('dashboard.student_dashboard')->with('student', $student);
+        return view('dashboard.student.src.html.index')->with('student', $student);
         //return redirect()->intended(); // Replace with your desired authenticated student redirect route
        
     }

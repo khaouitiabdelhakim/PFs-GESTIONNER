@@ -26,9 +26,7 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
-Route::get('/student_dashboard', function () {
-    return view('dashboard.student_dashboard');
-});
+
 
 Route::get('/register', function () {
     return view('auth.register');
@@ -37,7 +35,7 @@ Route::get('/register', function () {
 
 Route::post('/student/register', [StudentRegisterController::class, 'register'])->name('register.perform');
 
-Route::post('/student/login', [StudentLoginController::class, 'login'])->name('student.login');
+Route::post('dashboard-student', [StudentLoginController::class, 'login'])->name('student.login');
 
 Route::get('/professor_dashboard', function () {
     return view('dashboard.professor_dashboard');
