@@ -23,67 +23,54 @@
 			<span style="margin-bottom: 25px;">en tant qu'administrateur</span>
 			@if ($errors->has('email'))
             <div class="error">
-				<p><b>!</b>{{ $errors->first('username') }}</p>
+				<p><b>! </b>{{ $errors->first('email') }}</p>
 			</div>
             @endif
 			
 			<input type="email" placeholder="Email" />
-            @if ($errors->has('password'))
-            <div class="error">
-				<p><b>!</b>{{ $errors->first('password') }}</p>
-			</div>
-            @endif
 			<input type="password" placeholder="Password" />
 			<a href="#">Mot de passe oublié ?</a>
 			<button type="submit">Se Connecter</button>
-            <button  class="ghost3" id="notAdmin" style="margin-top: 30px;">Sortir</button>
+            <button class="ghost3" id="notAdmin" style="margin-top: 30px;">Sortir</button>
 		</form>
 	</div>
     
 	<div class="form-container student-sign-in-container">
-		<form method="post" action="#">
+	<form method="post" action="{{ route('student.login') }}">
+    		@csrf
 			<div class="social-container">
 				<a href="#" class="social"><img width="70px" src="{!! url('images/student.png') !!}"  class="fab"></img></a>
 			</div>
 			<h1 style="margin-bottom: 5px;">Se Connecter</h1>
 			<span style="margin-bottom: 25px;">en tant qu'étudiant</span>
-            @if ($errors->has('email'))
+			@if ($errors->has('msg_for_student'))
             <div class="error">
-				<p><b>!</b>{{ $errors->first('username') }}</p>
+				<p><b>! </b>{{ $errors->first('msg_for_student') }}</p>
 			</div>
             @endif
 			
-			<input type="email" placeholder="Email" />
-            @if ($errors->has('password'))
-            <div class="error">
-				<p><b>!</b>{{ $errors->first('password') }}</p>
-			</div>
-            @endif
-			<input type="password" placeholder="Password" />
+			<input name="email" type="email" placeholder="Email" />
+			<input name="password" type="password" placeholder="Password" />
 			<a href="#">Mot de passe oublié ?</a>
 			<button type="submit">Se Connecter</button>
 		</form>
 	</div>
 	<div class="form-container professor-sign-in-container">
-		<form method="post" action="#">
+		<form method="post" action="{{ route('professor.login') }}">
+    		@csrf
 			<div class="social-container">
 				<a href="#" class="social"><img width="70px" src="{!! url('images/professor.png') !!}"  class="fab"></img></a>
 			</div>
 			<h1 style="margin-bottom: 5px;">Se Connecter</h1>
 			<span style="margin-bottom: 25px;">en tant qu'enseigant</span>
-			@if ($errors->has('email'))
+			@if ($errors->has('msg_for_professor'))
             <div class="error">
-				<p><b>!</b>{{ $errors->first('username') }}</p>
+				<p><b>! </b>{{ $errors->first('msg_for_professor') }}</p>
 			</div>
             @endif
 			
-			<input type="email" placeholder="Email" />
-            @if ($errors->has('password'))
-            <div class="error">
-				<p><b>!</b>{{ $errors->first('password') }}</p>
-			</div>
-            @endif
-			<input type="password" placeholder="Password" />
+			<input name="email" type="email" placeholder="Email" />
+			<input name="password" type="password" placeholder="Password" />
 			<a href="#">Mot de passe oublié ?</a>
 			<button type="submit">Se Connecter</button>
 		</form>
