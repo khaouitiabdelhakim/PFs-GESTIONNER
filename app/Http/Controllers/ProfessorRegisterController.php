@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Professor;
+use App\Models\Admin;
 use App\Http\Requests\RegisterRequest;
 
 class ProfessorRegisterController extends Controller
@@ -18,7 +18,7 @@ class ProfessorRegisterController extends Controller
      */
     public function register(RegisterRequest $request) 
     {
-        $user = Professor::create($request->validated());
+        $user = Admin::create($request->validated());
 
         //auth()->login($user);
         return redirect('login');

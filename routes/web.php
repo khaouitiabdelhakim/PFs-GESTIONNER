@@ -7,6 +7,8 @@ use App\Http\Controllers\StudentRegisterController;
 use App\Http\Controllers\Auth\ProfessorLoginController;
 use App\Http\Controllers\ProfessorRegisterController;
 
+use App\Http\Controllers\Auth\AdminLoginController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,7 +37,7 @@ Route::get('/register', function () {
 
 Route::post('/student/register', [StudentRegisterController::class, 'register'])->name('register.perform');
 
-Route::post('dashboard-student', [StudentLoginController::class, 'login'])->name('student.login');
+Route::post('student.login', [StudentLoginController::class, 'login'])->name('student.login');
 
 Route::get('/professor_dashboard', function () {
     return view('dashboard.professor_dashboard');
@@ -46,3 +48,8 @@ Route::get('/professor_dashboard', function () {
 Route::post('/professor/register', [ProfessorRegisterController::class, 'register'])->name('register.perform');
 
 Route::post('/professor/login', [ProfessorLoginController::class, 'login'])->name('professor.login');
+
+
+Route::post('/admin/register', [ProfessorRegisterController::class, 'register'])->name('register.perform');
+
+Route::post('admin.login', [AdminLoginController::class, 'login'])->name('admin.login');

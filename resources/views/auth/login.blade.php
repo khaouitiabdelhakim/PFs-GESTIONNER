@@ -15,20 +15,21 @@
 <div class="container" id="container">
 
     <div id="admin-container" class="form-container admin-sign-in-container admin-container-hidden">
-		<form method="post" action="#">
+		<form method="post" action="{{ route('admin.login') }}">
+    		@csrf
             <div class="social-container">
 				<a href="#" class="social"><img width="50px" src="{!! url('images/admin.png') !!}" class="fab"></img></a>
 			</div>
 			<h1 style="margin-bottom: 5px;">Se Connecter</h1>
 			<span style="margin-bottom: 25px;">en tant qu'administrateur</span>
-			@if ($errors->has('email'))
+			@if ($errors->has('msg_for_admin'))
             <div class="error">
-				<p><b>! </b>{{ $errors->first('email') }}</p>
+				<p><b>! </b>{{ $errors->first('msg_for_admin') }}</p>
 			</div>
             @endif
 			
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
+			<input name="email" type="email" placeholder="Email" />
+			<input name="password" type="password" placeholder="Password" />
 			<a href="#">Mot de passe oublié ?</a>
 			<button type="submit">Se Connecter</button>
             <button class="ghost3" id="notAdmin" style="margin-top: 30px;">Sortir</button>
