@@ -24,7 +24,33 @@
 
       <div class="container-fluid">
         <!--  Row 1 -->
-        <p>hello from dahsboard</p>
+        <h5 style="margin-bottom:25px;">Devoirs No Rendus</h5>
+                  <div class="card">
+                    <div class="card-header">
+                      Tache
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">Conception du site</h5>
+                      <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. In cupiditate eaque quas debitis ipsa tempora explicabo nesciunt ut ab sapiente repellat officiis modi similique deleniti quae dolorem, veritatis unde cumque ducimus? Consequuntur ad facere a nisi perspiciatis, quis, esse sit illo nihil natus praesentium soluta dolorum explicabo molestias ab omnis ut iure cumque sint eius? Nihil sit commodi quas temporibus.</p>
+                      <a href="#" class="btn btn-primary">Rendre Le Devoir</a>
+                    </div>
+                  </div>
+
+                  <h5 style="margin-bottom:25px;">Devoirs Traités</h5>
+
+                  <div class="card">
+                    <div class="card-header">
+                      Tache
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">Conception du site</h5>
+                      <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. In cupiditate eaque quas debitis ipsa tempora explicabo nesciunt ut ab sapiente repellat officiis modi similique deleniti quae dolorem, veritatis unde cumque ducimus? Consequuntur ad facere a nisi perspiciatis, quis, esse sit illo nihil natus praesentium soluta dolorum explicabo molestias ab omnis ut iure cumque sint eius? Nihil sit commodi quas temporibus.</p>
+                      
+                      <fieldset disabled>
+                      <a href="#" class="btn btn-primary">Ce Devoir est terminé</a>
+                    </fieldset>
+                    </div>
+                  </div>
       </div>
     </div>
   </div>
