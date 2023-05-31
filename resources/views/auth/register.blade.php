@@ -7,40 +7,53 @@
     <title>Document</title>
 </head>
 <body>
-<form method="post" action="{{ route('register.perform') }}">
+<form method="post" action="{{ route('student.register') }}">
 
-<input type="hidden" name="_token" value="{{ csrf_token() }}" />
-<img class="mb-4" src="{!! url('images/bootstrap-logo.svg') !!}" alt="" width="72" height="57">
-
-<h1 class="h3 mb-3 fw-normal">Register</h1>
-
-<div class="form-group form-floating mb-3">
-    <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="name@example.com" required="required" autofocus>
-    <label for="floatingEmail">Email address</label>
-    @if ($errors->has('email'))
-        <span class="text-danger text-left">{{ $errors->first('email') }}</span>
-    @endif
-</div>
-
-<div class="form-group form-floating mb-3">
-    <input type="password" class="form-control" name="password" value="{{ old('password') }}" placeholder="Password" required="required">
-    <label for="floatingPassword">Password</label>
-    @if ($errors->has('password'))
-        <span class="text-danger text-left">{{ $errors->first('password') }}</span>
-    @endif
-</div>
-
-<div class="form-group form-floating mb-3">
-    <input type="password" class="form-control" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="Confirm Password" required="required">
-    <label for="floatingConfirmPassword">Confirm Password</label>
-    @if ($errors->has('password_confirmation'))
-        <span class="text-danger text-left">{{ $errors->first('password_confirmation') }}</span>
-    @endif
-</div>
-
-<button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
-
-
-</form>
+      <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+        <div class="mb-3">
+          <label for="nomEtudiant" class="form-label">Nom de l'étudiant</label>
+          <input name="last_name" type="text" class="form-control" id="nomEtudiant">
+        </div>
+        <div class="mb-3">
+          <label for="nomEtudiant" class="form-label">Prénom de l'étudiant</label>
+          <input name="first_name" type="text" class="form-control" id="nomEtudiant">
+        </div>
+        <div class="mb-3">
+          <label for="filiere" class="form-label">Filière</label>
+          <select name="sector" class="form-select" id="filiere">
+            <option value="">Sélectionnez une filière</option>
+            <option value="BI&A">BI&A</option>
+            <option value="GD">GD</option>
+            <option value="GL">GL</option>
+            <option value="IDSIT">IDSIT</option>
+            <option value="SSI">SSI</option>
+            <option value="SSE">SSE</option>
+            <option value="2SCL">2SCL</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="niveau" class="form-label">Niveau</label>
+          <select name="level" class="form-select" id="niveau">
+            <option value="">Sélectionnez un niveau</option>
+            <option value="1A">1A</option>
+            <option value="2A">2A</option>
+            <option value="3A">3A</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="emailMembres" class="form-label">Email de l'étudiant</label>
+          <input name="email" type="email" class="form-control" id="emailEtudiant">
+        </div>
+        <div class="mb-3">
+          <label for="profPassword" class="form-label">Mot de passe</label>
+          <div class="input-group">
+            <input name="password" value="motdepasse" type="password" class="form-control" id="profPassword">
+            <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility()">
+              <i id="passwordVisibilityIcon" class="ti ti-eye text-dark"></i>
+            </button>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+      </form>
 </body>
 </html>

@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('password');
             $table->string('sector')->nullable();
             $table->string('level')->nullable();
+            $table->unsignedBigInteger('project_id')->nullable();
+            $table->foreign('project_id')->references('id')->on('projects');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -30,7 +30,7 @@
 			
 			<input name="email" type="email" placeholder="Email" />
 			<input name="password" type="password" placeholder="Password" />
-			<a href="#">Mot de passe oublié ?</a>
+			<a href="forgotpassword">Mot de passe oublié ?</a>
 			<button type="submit">Se Connecter</button>
             <button class="ghost3" id="notAdmin" style="margin-top: 30px;">Sortir</button>
 		</form>
@@ -52,7 +52,7 @@
 			
 			<input name="email" type="email" placeholder="Email" />
 			<input name="password" type="password" placeholder="Password" />
-			<a href="#">Mot de passe oublié ?</a>
+			<a href="forgotpassword">Mot de passe oublié ?</a>
 			<button type="submit">Se Connecter</button>
 		</form>
 	</div>
@@ -72,7 +72,7 @@
 			
 			<input name="email" type="email" placeholder="Email" />
 			<input name="password" type="password" placeholder="Password" />
-			<a href="#">Mot de passe oublié ?</a>
+			<a href="forgotpassword">Mot de passe oublié ?</a>
 			<button type="submit">Se Connecter</button>
 		</form>
 	</div>

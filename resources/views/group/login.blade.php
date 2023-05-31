@@ -15,43 +15,46 @@
 <h2>GROUPE</h2>
 	<div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form action="#">
-			
-			@csrf
-            <div class="social-container">
+	<form method="post" action="{{ route('group.register') }}">
+
+<input type="hidden" name="_token" value="{{ csrf_token() }}" />
+<div class="social-container">
 				<a href="#" class="social"><img width="50px" src="{!! url('images/groupe_setting.png') !!}" class="fab"></img></a>
 			</div>
 			<h1 style="margin-bottom: 5px;">Créer Groupe</h1>
 			<span style="margin-bottom: 25px;">créer un nouveau groupe</span>
 			@if ($errors->has('msg_group_signup'))
             <div class="error">
-				<p><b>! </b>{{ $errors->first('msg_for_admin') }}</p>
+				<p><b>! </b>{{ $errors->first('msg_group_signup') }}</p>
 			</div>
             @endif
-			<input name="name" type="name" placeholder="nom du groupe  ex: GL212" />
-			<input name="password" type="password" placeholder="mot de passe" />
-			<input name="password_verification" type="password" placeholder="retapez le mot de passe" />
-			<button>Créer</button>
-		</form>
+			<input type="text" class="form-control" name="name" value="{{ old('email') }}" placeholder="group name" required="required" autofocus>
+			<input type="password" class="form-control" name="password" value="{{ old('password') }}" placeholder="mot de passe" required="required">
+			<input type="password" class="form-control" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="confirmez le mot de passe" required="required">
+    
+			<button type="submit">Créer</button>
+
+
+</form>
 	</div>
 	<div class="form-container sign-in-container">
-		<form action="#">
-		@csrf
+		<form method="post" action="{{ route('group.login') }}">
+    		@csrf
             <div class="social-container">
 				<a href="#" class="social"><img width="50px" src="{!! url('images/groupe.png') !!}" class="fab"></img></a>
 			</div>
 			<h1 style="margin-bottom: 5px;">Rejoindre Groupe</h1>
 			<span style="margin-bottom: 25px;">se connecter à son groupe</span>
-			@if ($errors->has('msg_group_signup'))
+			@if ($errors->has('msg_group_signin'))
             <div class="error">
-				<p><b>! </b>{{ $errors->first('msg_for_admin') }}</p>
+				<p><b>! </b>{{ $errors->first('msg_group_signin') }}</p>
 			</div>
             @endif
 			
 			<input name="name" type="name" placeholder="nom du groupe" />
 			<input name="password" type="password" placeholder="mot de passe" />
 			
-			<button id="rejoindre">Rejoindre</button>
+			<button type="submit" id="rejoindre">Rejoindre</button>
 			<a href="#">Mot de passe du groupe oublié ?</a>
 		</form>
 	</div>

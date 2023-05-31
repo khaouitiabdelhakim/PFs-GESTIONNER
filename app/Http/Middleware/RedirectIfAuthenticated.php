@@ -19,18 +19,19 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
-        $guards = ["students","admins","professors"];
+        $guards = ["students","admins","professors","groups"];
+
 
         if (Auth::guard($guards[0])->check()) {
-            return redirect("student-dashbord");
+            return redirect("student/dashboard");
         }
-
+        
         if (Auth::guard($guards[1])->check()) {
-            return redirect("student-dashbord");
+            return redirect("admin/dashboard");
         }
 
         if (Auth::guard($guards[2])->check()) {
-            return redirect("student-dashbord");
+            return redirect("professor/dashboard");
         }
 
         return $next($request);

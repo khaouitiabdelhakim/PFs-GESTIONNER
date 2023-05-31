@@ -53,6 +53,10 @@ class Kernel extends HttpKernel
      * @var array<string, class-string|string>
      */
     protected $routeMiddleware = [
+        'admin_logged_in' =>  \App\Http\Middleware\RedirectIfAdminNotAuthenticated::class,
+        'student_yes_group_no' =>  \App\Http\Middleware\RedirectIfStudentAuthenticated::class,
+        'group_logged_in' =>  \App\Http\Middleware\RedirectIfGroupNotAuthenticated::class,
+        'professor_logged_in' =>  \App\Http\Middleware\RedirectIfProfessorNotAuthenticated::class,
         'student_logged_in' =>  \App\Http\Middleware\RedirectIfStudentNotAuthenticated::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,

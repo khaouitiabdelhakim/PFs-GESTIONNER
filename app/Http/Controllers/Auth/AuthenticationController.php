@@ -8,6 +8,13 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Http\Requests\LoginGroupRequest;
+use App\Http\Requests\RegisterGroupRequest;
+
+use App\Models\Group;
+use App\Models\Composition;
+
+use App\Models\Subject;
 
 use App\Models\Admin;
 use App\Models\Professor;
@@ -19,8 +26,6 @@ use Illuminate\Support\Facades\Session;
 
 class AuthenticationController extends Controller
 {
-    protected $username = 'email';
- 
 
     /**
      * Handle account login request
@@ -29,7 +34,7 @@ class AuthenticationController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function loginAdmin(LoginRequest $request)
+    public function loginAdmin(Request $request)
     {
         $credentials = $request->only('email', 'password');
 
@@ -46,7 +51,7 @@ class AuthenticationController extends Controller
         ]);
     }
 
-    public function loginStudent(LoginRequest $request)
+    public function loginStudent(Request $request)
     {
         $credentials = $request->only('email', 'password');
 
@@ -63,7 +68,7 @@ class AuthenticationController extends Controller
         ]);
     }
 
-    public function loginProfessor(LoginRequest $request)
+    public function loginProfessor(Request $request)
     {
         $credentials = $request->only('email', 'password');
 
@@ -90,7 +95,13 @@ class AuthenticationController extends Controller
      */
     protected function authenticatedAdmin(Request $request, $user) 
     {
-        return view('dashboard.admin.src.html.index')->with('admin', $user);
+        $admin = Auth::guard('admins')->user();
+        $student_count = Student::count();
+        $professor_count = Professor::count();
+        $group_count = Group::count();
+        return view('dashboard.admin.src.html.index')->with('student_count' , $student_count)->with(
+        'professor_count' , $professor_count)->with(
+        'group_count' , $group_count);
         //return redirect()->intended(); // Replace with your desired authenticated student redirect route
        
     }
@@ -99,7 +110,9 @@ class AuthenticationController extends Controller
     {
         //return view('dashboard.student.src.html.index')->with('student', $user);
         //return redirect()->intended(); // Replace with your desired authenticated student redirect route
-        return view('group.login')->with('student', $user);
+        //return redirect('student-dashboard')->with('student', $user);
+        $student = Auth::guard('students')->user();
+        return view('dashboard.student.src.html.profil')->with('student', $student);
        
     }
 
@@ -121,34 +134,67 @@ class AuthenticationController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function registerAdmin(RegisterRequest $request) 
+    public function registerAdmin(Request $request) 
     {
-        $user = Admin::create($request->validated());
+        try {
+            $this->validate($request, [
+                'email' => 'required|email:rfc,dns|unique:admins,email',
+                'password' => 'required|min:8',
+            ]);
+        } catch (ValidationException $e) {
+        }
+
+
+        $admin = $request->all();
+
+        $user = Admin::create($admin);
 
         //auth()->login($user);
-        return redirect('login');
+        return redirect('/');
         //return view('student.dashboard')->with('user', $user)->with('success', "Account successfully registered.");
 
         //return redirect('/')
     }
 
-    public function registerStudent(RegisterRequest $request) 
+    public function registerStudent(Request $request) 
     {
-        $user = Student::create($request->validated());
+        try {
+            $this->validate($request, [
+                'email' => 'required|email:rfc,dns|unique:students,email',
+                'password' => 'required|min:8',
+            ]);
+        } catch (ValidationException $e) {
+        }
+
+
+        $student = $request->all();
+
+        $user = Student::create($student);
 
         //auth()->login($user);
-        return redirect('login');
+        return redirect()->back()->with('success', 'Compte étudiant créé avec succès');
         //return view('student.dashboard')->with('user', $user)->with('success', "Account successfully registered.");
 
         //return redirect('/')
     }
 
-    public function registerProfessor(RegisterRequest $request) 
+    public function registerProfessor(Request $request) 
     {
-        $user = Professor::create($request->validated());
+        try {
+            $this->validate($request, [
+                'email' => 'required|email:rfc,dns|unique:professors,email',
+                'password' => 'required|min:8',
+            ]);
+        } catch (ValidationException $e) {
+        }
+
+
+        $professor = $request->all();
+
+        $user = Professor::create($professor);
 
         //auth()->login($user);
-        return redirect('login');
+        return redirect()->back()->with('success', 'Compte professeur créé avec succès');
         //return view('student.dashboard')->with('user', $user)->with('success', "Account successfully registered.");
 
         //return redirect('/')
@@ -174,6 +220,8 @@ class AuthenticationController extends Controller
 
     public function logoutProfessor()
     {
+        Auth::guard('groups')->logout();
+
         Session::flush();
         
         Auth::guard('students')->logout();
@@ -189,4 +237,154 @@ class AuthenticationController extends Controller
 
         return redirect('/');
     }
+
+
+    /**
+     * managing the groups ABDELHAKIM KHAOUITI
+     */
+
+
+    public function loginGroup(LoginGroupRequest $request)
+    {
+        $credentials = $request->only('name', 'password');
+        
+
+        if (Auth::guard('groups')->attempt($credentials)) {
+            // Authentication successful
+            $user = Auth::guard('groups')->user();
+
+            return $this->authenticatedGroup($request, $user);
+           }
+
+             // Authentication failed
+            return redirect()->back()->withErrors([
+            'msg_group_login' => 'invalid credentials.',
+        ]);
+    }
+
+    protected function authenticatedGroup(Request $request, $user) 
+    {
+       
+
+        $student = Auth::guard('students')->user();
+        $group = Auth::guard('groups')->user();
+
+        $professor = Professor::whereIn('id', function ($query) use ($group)  {
+            $query->select('encadrant_id')
+                ->from('groups')
+                ->where('id', $group->id);
+        })->get();
+
+        $project = Subject::whereIn('id', function ($query) use ($group)  {
+            $query->select('subject_id')
+                ->from('affectations')
+                ->where('group_id', $group->id);
+        })->get();
+
+         //add the user to the
+
+         $student = Auth::guard('students')->user();
+
+         $check_student = Composition::where('student_id',$student->id)->get();
+         if ($check_student->count() == 0) {
+ 
+             $composition = new Composition();
+             $composition->group_id = $group->id;
+             $composition->student_id = $student->id;
+             $composition->save();
+         }
+         
+         $group->nb_etudiant = $group->nb_etudiant + 1;
+         $group->save();
+
+
+
+        $membres = Student::whereIn('id', function ($query) use ($group)  {
+            $query->select('student_id')
+                ->from('compositions')
+                ->where('group_id', $group->id);
+        })->get();
+
+
+    
+        return view('dashboard.group.src.html.index')->with('group', $group)
+        ->with('membres',$membres)->with('professor',$professor)
+        ->with('project',$project);
+        //return redirect()->intended(); // Replace with your desired authenticated student redirect route
+       
+    }
+
+    public function forgotPassword(){
+        return view('auth.forgottenpasswd');
+    }
+
+    public function registerGroup(Request $request) 
+    {
+        try {
+            $this->validate($request, [
+                'name' => 'required|unique:groups,name|min:4',
+                'password' => 'required|min:8',
+                'password_confirmation' => 'required|same:password'
+            ]);
+        } catch (ValidationException $e) {
+        }
+
+
+        $group_info = $request->all();
+
+        $student = Auth::guard('students')->user();
+
+        $group_info['sector'] = $student->sector;
+        $group_info['level'] = $student->level;
+        $group_info['nb_etudiant'] = 1;
+
+        $group = Group::create($group_info);
+
+        $composition = new Composition();
+        $composition->group_id = $group->id;
+        $composition->student_id = $student->id;
+        $composition->save();
+
+
+        //auth()->login($user);
+        return redirect()->back()->with('success', 'Groupe créé avec succès');
+        //return view('student.dashboard')->with('user', $user)->with('success', "Account successfully registered.");
+
+        //return redirect('/')
+    }
+
+    public function logoutGroup()
+    {
+        //Session::flush();
+        
+        Auth::guard('groups')->logout();
+
+        return redirect('student/dashboard');
+    }
+
+
+    public function adminRegisterGroup(Request $request) 
+    {
+        try {
+            $this->validate($request, [
+                'name' => 'required|unique:groups,name|min:4',
+                'password' => 'required|min:8',
+            ]);
+        } catch (ValidationException $e) {
+        }
+
+
+        $group_info = $request->all();
+
+        $group_info['nb_etudiant'] = 0;
+
+        $group = Group::create($group_info);
+
+        //auth()->login($user);
+        return redirect()->back()->with('success', 'Groupe créé avec succès');
+        //return view('student.dashboard')->with('user', $user)->with('success', "Account successfully registered.");
+
+        //return redirect('/')
+    }
+
 }
