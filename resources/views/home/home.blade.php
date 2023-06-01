@@ -147,7 +147,7 @@
 
               <h1 class="mb-4" data-animation="fadeInUp" style="font-family: 'Montserrat', sans-serif;">ENSIAS</h1>
               <p class="mb-7 " data-animation="fadeInUp" data-animation-delay="200" style="font-family: 'Montserrat', sans-serif;">À la croisée de l'excellence, de l'innovation et de la passion, formant les leaders de demain dans le domaine de l'informatique</p>
-              <a style="font-family: 'Montserrat', sans-serif;" href="login" class="btn btn-primary mr-3 scrollto animated" data-animation="fadeInUp" data-animation-delay="400">se connecter</a>
+              <a style="font-family: 'Montserrat', sans-serif;" href="/login" class="btn btn-primary mr-3 scrollto animated" data-animation="fadeInUp" data-animation-delay="400">se connecter</a>
 
             </div>
           </div>
@@ -472,8 +472,8 @@
       <div class="col-12 col-md-6 text-center">
         <div class="portfolio-item mb-8">
           <div class="item-media d-flex justify-content-center"> <!-- Ajout des classes "d-flex" et "justify-content-center" -->
-            <a href="assets/images/binome.png" class="mfp-image">
-              <img src="{!! url('home/assets/images/binome.png') !!}" style="max-width: 100%; height: 500px;">
+            <a href="{!! url('home/assets/images/khaouiti.png') !!}" class="mfp-image">
+              <img src="{!! url('home/assets/images/khaouiti.png') !!}" style="max-width: 100%; height: 500px;">
             </a>
           </div>
           <div class="pt-lg-8">
@@ -484,7 +484,7 @@
       <div class="col-12 col-md-6 text-center">
         <div class="portfolio-item mb-8">
           <div class="item-media d-flex justify-content-center"> <!-- Ajout des classes "d-flex" et "justify-content-center" -->
-            <a href="assets/images/anass.png" class="mfp-image">
+            <a href="{!! url('home/assets/images/anass.png') !!}" class="mfp-image">
               <img src="{!! url('home/assets/images/anass.png') !!}" style="max-width: 100%; height: 500px;">
             </a>  
           </div>
