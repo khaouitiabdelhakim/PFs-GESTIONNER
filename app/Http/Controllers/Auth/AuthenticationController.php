@@ -275,7 +275,7 @@ class AuthenticationController extends Controller
                 ->where('id', $group->id);
         })->get();
 
-        $project = Subject::whereIn('id', function ($query) use ($group)  {
+        $subject = Subject::whereIn('id', function ($query) use ($group)  {
             $query->select('subject_id')
                 ->from('affectations')
                 ->where('group_id', $group->id);
@@ -309,7 +309,7 @@ class AuthenticationController extends Controller
     
         return view('dashboard.group.src.html.index')->with('group', $group)
         ->with('membres',$membres)->with('professor',$professor)
-        ->with('project',$project);
+        ->with('subject',$subject);
         //return redirect()->intended(); // Replace with your desired authenticated student redirect route
        
     }

@@ -1,0 +1,64 @@
+//
+// portfolio.scss
+// Lana component
+//
+
+.portfolio-item {
+	position: relative;
+}
+
+.portfolio-item .item-media {
+	position: relative;
+	overflow: hidden;
+}
+
+.portfolio-item .item-media a,
+.portfolio-item .item-media img {
+	display: block;
+}
+
+.portfolio-item .item-media .media-container {
+	position: relative;
+	overflow: hidden;
+}
+
+@media (max-width: 575px){
+.portfolio-item .item-media .media-container {
+		height: 70vh;
+	}
+}
+
+@media (min-width: 576px){
+	.portfolio-item .item-media .media-container {
+		height: 70vh;
+	}
+}
+
+@media (min-width: 768px){
+	.portfolio-item .item-media .media-container {
+		height: 70vh;
+	}
+}
+
+@media (min-width: 992px){
+	.portfolio-item .item-media .media-container {
+		height: 70vh;
+	}
+}
+
+@media (min-width: 1200px){
+	body:not(.layout-mobile) .portfolio-item {
+		margin-bottom: 0 !important;
+	}
+	.portfolio-item .item-media .media-container {
+		height: 50vh;
+	}
+}
+
+.portfolio-item .item-media .media-container .bg-image-holder {
+	position: absolute;
+	top: -1px;
+	bottom: -1px;
+	left: -1px;
+	right: -1px;
+}

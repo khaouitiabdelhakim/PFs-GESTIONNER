@@ -1,0 +1,20 @@
+// Bootstrap setup
+@import "../vendor/bootstrap/scss/functions";
+
+// Theme functions
+@import "lana/functions";
+
+// Theme setup
+@import "lana/variables";
+
+// Custom setup
+@import "user-variables";
+
+// Bootstrap core
+@import '../vendor/bootstrap/scss/bootstrap';
+
+// Theme core
+@import "lana/core";
+
+// User
+@import "user";

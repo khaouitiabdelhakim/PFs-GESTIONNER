@@ -1,0 +1,235 @@
+//
+// navbar.scss
+// Extended from Bootstrap
+//
+
+.navbar {
+  transition: $transition-base;
+  transition-property: background-color, color, box-shadow;
+  z-index: $zindex-fixed;
+}
+
+.site-navbar.site-navbar-transparent {
+
+  &:not(.scrolled):not(.navbar-toggled-show),
+  &.scrolled-0:not(.navbar-toggled-show) {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+}
+
+
+// Toggler
+
+.navbar-toggler-alternative {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background-color: transparent;
+  border: 0 solid transparent;
+  border-radius: 0;
+
+  @include hover-focus() {
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.navbar-toggler-alternative-icon {
+  position: relative;
+  width: 30px;
+  margin: 0 auto;
+  background-color: $navbar-dark-color;
+  transition: background-color .2s .2s ease;
+}
+
+.navbar-toggler-alternative-icon,
+.navbar-toggler-alternative-icon:before,
+.navbar-toggler-alternative-icon:after {
+  display: block;
+  height: 2px;
+  background-clip: padding-box;
+}
+
+.navbar-toggler-alternative-icon:before,
+.navbar-toggler-alternative-icon:after {
+  position: absolute;
+  content: '';
+  width: 15px;
+  background-color: $navbar-dark-color;
+  transform-origin: 50% 50%;
+  transition: background-color .2s .2s ease, top .2s .4s ease, left .2s .2s ease, right .2s .2s ease, width .2s .2s ease, transform .2s ease;
+}
+
+.navbar-toggler-alternative-icon:before {
+  top: 10px;
+  left: 15px;
+}
+
+.navbar-toggler-alternative-icon:after {
+  top: -10px;
+  right: 15px;
+}
+
+.navbar-toggler-alternative[aria-expanded="true"] .navbar-toggler-alternative-icon {
+  background-color: transparent !important;
+  transition: background-color .2s 0s ease;
+}
+
+.navbar-toggler-alternative[aria-expanded="true"] .navbar-toggler-alternative-icon:before,
+.navbar-toggler-alternative[aria-expanded="true"] .navbar-toggler-alternative-icon:after {
+  top: 0;
+  width: 30px;
+  transition: top .2s ease, left .2s .2s ease, right .2s .2s ease, width .2s .2s ease, transform .2s .4s ease;
+}
+
+.navbar-toggler-alternative[aria-expanded="true"] .navbar-toggler-alternative-icon:before {
+  left: 0;
+  transform: rotate3d(0, 0, 1, 45deg);
+}
+
+.navbar-toggler-alternative[aria-expanded="true"] .navbar-toggler-alternative-icon:after {
+  right: 0;
+  transform: rotate3d(0, 0, 1, -45deg);
+}
+
+.navbar-light {
+
+  .navbar-toggler-alternative-icon {
+    background-color: $navbar-light-color;
+  }
+
+  .navbar-toggler-alternative-icon:before,
+  .navbar-toggler-alternative-icon:after {
+    background-color: $navbar-light-color;
+  }
+}
+
+.navbar-dark {
+
+  .navbar-toggler-alternative-icon {
+    background-color: $navbar-dark-color;
+  }
+
+  .navbar-toggler-alternative-icon:before,
+  .navbar-toggler-alternative-icon:after {
+    background-color: $navbar-dark-color;
+  }
+}
+
+.navbar-expand {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($next, $grid-breakpoints);
+
+    &#{$infix} {
+      @include media-breakpoint-up($next) {
+
+        .navbar-toggler-alternative {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+
+// Brand
+
+.navbar-brand {
+  font-weight: $navbar-brand-font-weight;
+  transition: all 0.35s ease-out;
+
+  .navbar-brand-text,
+  .navbar-brand-img {
+    transition: all 0.15s ease-out;
+  }
+}
+
+.navbar-brand-img {
+  max-height: $navbar-brand-height;
+  width: auto;
+}
+
+.navbar-dark {
+
+  .navbar-brand {
+
+    .navbar-brand-text,
+    .navbar-brand-img {
+      filter: brightness(0) invert(1);
+    }
+  }
+}
+
+
+// Button
+
+.navbar-btn {
+
+  @include media-breakpoint-down(md) {
+    width: 100%;
+    padding: $btn-padding-y $btn-padding-x;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    font-size: $btn-font-size;
+  }
+}
+
+
+// Navigation
+
+.navbar-nav .nav-link {
+  font-weight: $navbar-nav-link-font-weight;
+
+  @include hover-focus {
+    outline: none;
+  }
+}
+
+.navbar {
+
+  .navbar-nav .active > .nav-link,
+  .navbar-nav .nav-link.active {
+    position: relative;
+  }
+
+  .navbar-nav .active > .nav-link:before,
+  .navbar-nav .nav-link.active:before {
+    content: '';
+    display: none;
+    position: absolute;
+    bottom: .25rem;
+    left: $navbar-nav-link-padding-x;
+    right: $navbar-nav-link-padding-x;
+    border-bottom: 1px solid currentColor;
+  }
+}
+
+.navbar-expand {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($next, $grid-breakpoints);
+
+    &#{$infix} {
+      @include media-breakpoint-up($next) {
+
+        .navbar-nav .active > .nav-link:before,
+        .navbar-nav .nav-link.active:before {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+
+// Collapse
+
+.navbar-collapse {
+  transition: all 0.35s ease-out;
+}

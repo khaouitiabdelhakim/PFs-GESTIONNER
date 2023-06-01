@@ -1,0 +1,90 @@
+//
+// fill-colors.scss
+// Lana utilities
+//
+
+// Fill Colors
+
+.fill {
+  &-none {
+    fill: none !important;
+  }
+
+  &-white {
+    fill: $white !important;
+  }
+
+  &-dark {
+    fill: $dark !important;
+  }
+
+  &-primary {
+    fill: $primary !important;
+
+    &-lighter {
+      fill: lighten( $primary, 10 ) !important;
+    }
+
+    &-darker {
+      fill: darken( $primary, 10 ) !important;
+    }
+  }
+
+  &-success {
+    fill: $success !important;
+
+    &-lighter {
+      fill: lighten( $success, 10% ) !important;
+    }
+  }
+
+  &-info {
+    fill: $info !important;
+  }
+
+  &-danger {
+    fill: $danger !important;
+
+    &-lighter {
+      fill: lighten( $danger, 10% ) !important;
+    }
+  }
+
+  &-warning {
+    fill: $warning !important;
+
+    &-lighter {
+      fill: lighten( $warning, 10% ) !important;
+    }
+
+    &-darker {
+      fill: darken( $warning, 10% ) !important;
+    }
+  }
+
+  &-gray {
+    &-100 {
+      fill: $gray-100 !important;
+    }
+
+    &-200 {
+      fill: $gray-200 !important;
+    }
+
+    &-300 {
+      fill: $gray-300 !important;
+    }
+
+    &-400 {
+      fill: $gray-400 !important;
+    }
+
+    &-500 {
+      fill: $gray-500 !important;
+    }
+
+    &-600 {
+      fill: $gray-600 !important;
+    }
+  }
+}

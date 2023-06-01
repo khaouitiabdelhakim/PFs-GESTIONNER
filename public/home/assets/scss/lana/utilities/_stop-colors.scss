@@ -1,0 +1,40 @@
+//
+// stop-colors.scss
+// Lana utilities
+//
+
+// Stop Colors
+
+.stop-color {
+  &-white {
+    stop-color: $white !important;
+  }
+
+  &-primary {
+    stop-color: $primary !important;
+
+    &-lighter {
+      stop-color: lighten( $primary, 10% ) !important;
+    }
+
+    &-darker {
+      stop-color: darken( $primary, 10% ) !important;
+    }
+  }
+
+  &-success {
+    stop-color: $success !important;
+  }
+
+  &-warning {
+    stop-color: $warning !important;
+  }
+
+  &-danger {
+    stop-color: $danger !important;
+  }
+
+  &-info {
+    stop-color: $info !important;
+  }
+}

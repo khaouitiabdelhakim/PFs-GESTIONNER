@@ -33,7 +33,7 @@ use App\Http\Controllers\Auth\AuthenticationController;
 Route::get('test', [TestController::class, 'insertData']);
 
 Route::get('/', function () {
-    return view('index');
+    return view('home.home');
 });
 
 Route::get('notification', function () {

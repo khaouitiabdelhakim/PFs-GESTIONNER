@@ -1,0 +1,189 @@
+//
+// magnific popup
+//
+
+.mfp-bg {
+	z-index: 10000 !important;
+	background-color: #00050e !important;
+}
+
+.mfp-wrap {
+	z-index: 10000 !important;
+}
+
+.mfp-modal {
+	position: relative;
+	background: #fff;
+	width: auto;
+	max-width: 730px;
+	margin: 20px auto;
+}
+
+.mfp-modal.mfp-modal-small {
+	max-width: 430px;
+}
+
+#subscribe-modal {
+	max-width: 540px;
+}
+
+.mfp-modal-title {
+	margin: 0;
+	padding: 15px 20px;
+	background: #f7f7f7;
+	border-bottom: 1px solid #e8e8e8;
+}
+
+.mfp-modal-content {
+	padding: 30px;
+	position: relative;
+	overflow: hidden;
+	z-index: 10;
+}
+
+.mfp-modal-footer {
+	margin: 0;
+	padding: 15px 20px;
+	border-top: 1px solid #e8e8e8;
+}
+
+.mfp-modal .overlay {
+	z-index: 0;
+}
+
+.mfp-modal .mfp-close,
+.mfp-image-holder .mfp-close,
+.mfp-iframe-holder .mfp-close {
+	font-size: 24px;
+}
+
+.mfp-close i {
+	position: relative;
+	z-index: -1;
+}
+
+.mfp-modal .mfp-close:active {
+	top: 0;
+}
+
+.mfp-close-btn-in .mfp-close-btn-white .mfp-close {
+	color: #fff;
+}
+
+/* Overlay at start */
+.mfp-fade.mfp-bg {
+	opacity: 0;
+	-webkit-transition: all 0.15s ease;
+	-moz-transition: all 0.15s ease;
+	transition: all 0.15s ease;
+}
+
+.mfp-fade.mfp-bg.mfp-ready {
+	opacity: 0.8;
+}
+
+.mfp-fade.mfp-bg.mfp-removing {
+	opacity: 0;
+}
+
+.mfp-fade.mfp-wrap .mfp-content {
+	opacity: 0;
+	-webkit-transition: all 0.15s ease;
+	-moz-transition: all 0.15s ease;
+	transition: all 0.15s ease;
+}
+
+.mfp-fade.mfp-wrap.mfp-ready .mfp-content {
+	opacity: 1;
+}
+
+.mfp-fade.mfp-wrap.mfp-removing .mfp-content {
+	opacity: 0;
+}
+
+/* Zoom effect */
+.mfp-zoom-in .mfp-with-anim {
+	opacity: 0;
+	transition: all 0.2s ease-in-out; 
+	transform: scale(0.8); 
+}
+
+.mfp-zoom-in.mfp-bg {
+	opacity: 0;
+	transition: all 0.3s ease-out;
+}
+
+.mfp-zoom-in.mfp-ready .mfp-with-anim {
+	opacity: 1;
+	transform: scale(1); 
+}
+
+.mfp-zoom-in.mfp-ready.mfp-bg {
+	opacity: 0.8;
+}
+
+.mfp-zoom-in.mfp-removing .mfp-with-anim {
+	transform: scale(0.8); 
+	opacity: 0;
+}
+
+.mfp-zoom-in.mfp-removing.mfp-bg {
+	opacity: 0;
+}
+
+.mfp-close-btn-in .mfp-ajax-holder .mfp-close {
+	background-color: #f7f7f7;
+	opacity: 1;
+	transition: color 0.3s ease;
+	-webkit-transition: color 0.3s ease;
+	-moz-transition: color 0.3s ease;
+}
+
+.mfp-close-btn-in .mfp-ajax-holder .mfp-close:hover {
+	color: #037de8;
+}
+
+button.mfp-arrow {
+	position: absolute;
+	opacity: 1;
+	margin: 0;
+	top: 50%;
+	margin-top: -55px;
+	padding: 0;
+	width: 90px;
+	height: 110px;
+}
+
+button.mfp-arrow:active {
+	margin-top: -55px;
+}
+
+button.mfp-arrow:before {
+	display: none;
+}
+
+button.mfp-arrow.mfp-arrow-left::after,
+button.mfp-arrow.mfp-arrow-right::after {
+	top: 0;
+	height: 110px;
+	width: 90px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	color: #fff;
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: 32px;
+	line-height: 110px;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+button.mfp-arrow.mfp-arrow-left::after {
+	content: "\f104";
+}
+
+button.mfp-arrow.mfp-arrow-right::after {
+	content: "\f105";
+}
