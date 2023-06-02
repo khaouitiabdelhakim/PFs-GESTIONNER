@@ -37,7 +37,7 @@ The goal of this project is to design (using Merise) and develop a web applicati
 ## How does it work ?
 
 ```
-git clone https://github.com/khaouitiabdelhakim/Final-Project.git
+git clone https://github.com/khaouitiabdelhakim/PFs-GESTIONNER.git
 
 cd Final-Project
 
