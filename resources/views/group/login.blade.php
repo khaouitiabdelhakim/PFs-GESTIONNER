@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PFs GESTIONNER - ENSIAS</title>
+  <link rel="shortcut icon" type="image/png" href="{!! url('styles/assets/images/logos/favicon.png') !!}" />
 
     <!-- Custom styles for this template -->
     <link href="{!! url('assets/css/login_group_css.css') !!}" rel="stylesheet">

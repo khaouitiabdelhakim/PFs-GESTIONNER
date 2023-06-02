@@ -1,7 +1,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Mon Dashboard</title>
+  <!-- Title -->
+  <title>PFs GESTIONNER - ENSIAS</title>
   
   <link rel="shortcut icon" type="image/png" href="{!! url('styles/assets/images/logos/favicon.png') !!}" />
   <link rel="stylesheet" href="{!! url('styles/assets/css/styles.min.css') !!}" />

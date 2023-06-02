@@ -4,7 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Modernize Free</title>
+  <!-- Title -->
+  <title>PFs GESTIONNER - ENSIAS</title>
   <link rel="shortcut icon" type="image/png" href="{!! url('styles/assets/images/logos/favicon.png') !!}" />
   <link rel="stylesheet" href="{!! url('styles/assets/css/styles.min.css') !!}" />
   
