@@ -14,6 +14,7 @@ use App\Models\Group;
 use App\Models\Affectation;
 use App\Models\Project;
 use App\Models\Task;
+use App\Models\ChatLine;
 
 class ProfessorController extends Controller
 {
@@ -29,7 +30,10 @@ class ProfessorController extends Controller
     public function chat(){
 
         $professor = Auth::guard('professors')->user();
-        return view('dashboard.professor.src.html.chat')->with('professor', $professor);
+        $messages = ChatLine::all();
+        
+        return view('dashboard.professor.src.html.chat')
+        ->with('professor', $professor)->with('messages', $messages);
     
     }
     
@@ -252,4 +256,28 @@ class ProfessorController extends Controller
     return redirect('professor/affecter.sujet');
 }
     
+
+    //chat part
+    public function sendMessage(Request $request)
+    {
+    try {
+        $this->validate($request, [
+            'message' => 'required',
+        ]);
+    } catch (ValidationException $e) {
+        // Handle the validation exception if needed
+    }
+
+    $message = $request->only('message')['message'];
+
+    $id = Auth::guard('professors')->user()->id;
+
+    $Message = new ChatLine();
+    $Message->user_id = $id;
+    $Message->message = $message;
+
+    $Message->save();
+
+    return redirect('professor/chat');
+    }
 }

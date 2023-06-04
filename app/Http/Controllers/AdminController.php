@@ -76,6 +76,12 @@ class AdminController extends Controller
     
     }
 
+    public function group(Group $group){
+
+        return view('dashboard.admin.src.html.uniquegrp')->with('group', $group);
+    
+    }
+
     public function student(Student $student){
 
         return view('dashboard.admin.src.html.uniquestudent')->with('student', $student);
@@ -125,6 +131,7 @@ class AdminController extends Controller
 
     return redirect()->back()->with('success', 'Groupe modifié avec succès');
     }
+
 
     public function saveProfessorChanges(Request $request)
     {

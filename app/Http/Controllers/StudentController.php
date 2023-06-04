@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Student;
+use App\Models\ChatLine;
 
 class StudentController extends Controller
 {
@@ -17,8 +18,10 @@ class StudentController extends Controller
     }
     public function chat(){
 
+        $messages = ChatLine::all();
         $student = Auth::guard('students')->user();
-        return view('dashboard.student.src.html.chat')->with('student', $student);
+        return view('dashboard.student.src.html.chat')
+        ->with('student', $student)->with('messages', $messages);
     
     }
 
@@ -49,5 +52,28 @@ class StudentController extends Controller
     $student->save();
 
     return redirect('student/dashboard');
+    }
+
+    public function sendMessage(Request $request)
+    {
+    try {
+        $this->validate($request, [
+            'message' => 'required',
+        ]);
+    } catch (ValidationException $e) {
+        // Handle the validation exception if needed
+    }
+
+    $message = $request->only('message')['message'];
+
+    $id = Auth::guard('students')->user()->id;
+
+    $Message = new ChatLine();
+    $Message->user_id = $id;
+    $Message->message = $message;
+
+    $Message->save();
+
+    return redirect('student/chat');
     }
 }

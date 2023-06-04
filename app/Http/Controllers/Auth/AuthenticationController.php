@@ -265,21 +265,8 @@ class AuthenticationController extends Controller
     protected function authenticatedGroup(Request $request, $user) 
     {
        
-
         $student = Auth::guard('students')->user();
         $group = Auth::guard('groups')->user();
-
-        $professor = Professor::whereIn('id', function ($query) use ($group)  {
-            $query->select('encadrant_id')
-                ->from('groups')
-                ->where('id', $group->id);
-        })->get();
-
-        $subject = Subject::whereIn('id', function ($query) use ($group)  {
-            $query->select('subject_id')
-                ->from('affectations')
-                ->where('group_id', $group->id);
-        })->get();
 
          //add the user to the
 
@@ -292,27 +279,16 @@ class AuthenticationController extends Controller
              $composition->group_id = $group->id;
              $composition->student_id = $student->id;
              $composition->save();
+
+             $group->nb_etudiant = $group->nb_etudiant + 1;
+             $group->save();
          }
          
-         $group->nb_etudiant = $group->nb_etudiant + 1;
-         $group->save();
-
-
-
-        $membres = Student::whereIn('id', function ($query) use ($group)  {
-            $query->select('student_id')
-                ->from('compositions')
-                ->where('group_id', $group->id);
-        })->get();
-
-
-    
-        return view('dashboard.group.src.html.index')->with('group', $group)
-        ->with('membres',$membres)->with('professor',$professor)
-        ->with('subject',$subject);
-        //return redirect()->intended(); // Replace with your desired authenticated student redirect route
+        return redirect('group/dashboard'); // Replace with your desired authenticated student redirect route
        
     }
+
+    
 
     public function forgotPassword(){
         return view('auth.forgottenpasswd');

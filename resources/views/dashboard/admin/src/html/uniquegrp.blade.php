@@ -34,55 +34,39 @@
         {{ session('success') }}
     </div>
 @endif
-      <form>
-        <div class="mb-3">
+      <form method="post" action="{{ route('group.change') }}">
+                @csrf
+              <input type="hidden" name="group_id" value="{{ $group->id }}">
+              <div class="mb-3">
           <label for="filiere" class="form-label">Filière</label>
-          <select class="form-select" id="filiere">
-            <option value="">Sélectionnez une filière</option>
-            <option value="BI&A">BI&A</option>
-            <option value="GD">GD</option>
-            <option value="GL">GL</option>
-            <option value="IDSIT">IDSIT</option>
-            <option value="SSI">SSI</option>
-            <option value="SSE">SSE</option>
-            <option value="2SCL">2SCL</option>
-          </select>
+          <select name="sector" class="form-select" id="filiere">
+          <option value="BI&A" @if($group->sector == 'BI&A') selected @endif>BI&A</option>
+          <option value="GD" @if($group->sector == 'GD') selected @endif>GD</option>
+          <option value="GL" @if($group->sector == 'GL') selected @endif>GL</option>
+          <option value="IDSIT" @if($group->sector == 'IDSIT') selected @endif>IDSIT</option>
+          <option value="SSI" @if($group->sector == 'SSI') selected @endif>SSI</option>
+          <option value="SSE" @if($group->sector == 'SSE') selected @endif>SSE</option>
+          <option value="2SCL" @if($group->sector == '2SCL') selected @endif>2SCL</option>
+        </select>
         </div>
         <div class="mb-3">
           <label for="niveau" class="form-label">Niveau</label>
-          <select class="form-select" id="niveau">
-            <option value="">Sélectionnez un niveau</option>
-            <option value="1A">1A</option>
-            <option value="2A">2A</option>
-            <option value="3A">3A</option>
+          <select name="level" class="form-select" id="niveau">
+            <option value="1A"  @if($group->level == '1A') selected @endif>1A</option>
+            <option value="2A"  @if($group->level == '2A') selected @endif>2A</option>
+            <option value="3A"  @if($group->level == '3A') selected @endif>3A</option>
           </select>
-        </div>
-        <div class="mb-3">
-          <label for="profEncadrant" class="form-label">Professeur encadrant</label>
-          <select class="form-select" id="profEncadrant">
-            <option value="">Sélectionnez un professeur encadrant</option>
-            <option value="Professeur A">Professeur A</option>
-            <option value="Professeur B">Professeur B</option>
-            <option value="Professeur C">Professeur C</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label for="emailMembres" class="form-label">Emails des membres</label>
-          <div id="emailContainer">
-            <input type="email" class="form-control mb-2" id="memberEmail1">
-          </div>
-          <button type="button" class="btn btn-secondary" onclick="addEmailField()">Ajouter e-mail</button>
         </div>
         <div class="mb-3">
           <label for="profPassword" class="form-label">Mot de passe</label>
           <div class="input-group">
-            <input value="motdepasse" type="password" class="form-control" id="profPassword">
+            <input name="password" value="motdepasse" type="password" class="form-control" id="profPassword">
             <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility()">
               <i id="passwordVisibilityIcon" class="ti ti-eye text-dark"></i>
             </button>
           </div>
         </div>
-        <button type="button" class="btn btn-primary" onclick="saveChanges()">Enregistrer</button>
+        <button type="submit" class="btn btn-primary" >Enregistrer</button>
       </form>
     </div>
   </div>
@@ -105,50 +89,6 @@
       passwordVisibilityIcon.classList.add("ti ti-eye");
     }
   }
-
-  function addEmailField() {
-    emailCount++;
-    var emailContainer = document.getElementById("emailContainer");
-    var newEmailField = document.createElement("input");
-    newEmailField.type = "email";
-    newEmailField.classList.add("form-control");
-    newEmailField.classList.add("mb-2");
-    newEmailField.id = "memberEmail" + emailCount;
-    emailContainer.appendChild(newEmailField);
-  }
-
-  function saveChanges() {
-    var filiere = document.getElementById("filiere").value;
-    var niveau = document.getElementById("niveau").value;
-    var profEncadrant = document.getElementById("profEncadrant").value;
-    var emailMembres = getEmails();
-    var profPassword = document.getElementById("profPassword").value;
-
-    // Effectuer ici les opérations nécessaires pour enregistrer les modifications
-
-    // Exemple d'affichage des nouvelles valeurs (à supprimer dans votre application réelle)
-    console.log("Nouvelle filière: " + filiere);
-    console.log("Nouveau niveau: " + niveau);
-    console.log("Nouveau professeur encadrant: " + profEncadrant);
-    console.log("Nouveaux emails des membres: " + emailMembres);
-    console.log("Nouveau mot de passe: " + profPassword);
-  }
-
-  function getEmails() {
-    var emails = [];
-    for (var i = 1; i <= emailCount; i++) {
-      var emailField = document.getElementById("memberEmail" + i);
-      if (emailField.value.trim() !== "") {
-        emails.push(emailField.value.trim());
-      }
-    }
-    return emails.join(", ");
-  }
-
-  // Définir les valeurs par défaut pour les champs de sélection
-  document.getElementById("filiere").value = "BI&A";
-  document.getElementById("niveau").value = "2A";
-  document.getElementById("profEncadrant").value = "Professeur B";
 </script>
 
 

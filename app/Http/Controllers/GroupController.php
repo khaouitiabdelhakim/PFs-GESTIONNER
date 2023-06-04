@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\Choice;
 use App\Models\Subject;
+use App\Models\Project;
 use App\Models\Composition;
 use App\Models\Student;
 use App\Models\Professor;
@@ -19,6 +20,7 @@ class GroupController extends Controller
     public function index(){
 
         $student = Auth::guard('students')->user();
+
         $group = Auth::guard('groups')->user();
 
         $professor = Professor::whereIn('id', function ($query) use ($group)  {
@@ -33,6 +35,8 @@ class GroupController extends Controller
                 ->where('group_id', $group->id);
         })->get();
 
+        $project = Project::where('id', $group->project_id)->first();;
+
         $membres = Student::whereIn('id', function ($query) use ($group)  {
             $query->select('student_id')
                 ->from('compositions')
@@ -40,7 +44,7 @@ class GroupController extends Controller
         })->get();
         return view('dashboard.group.src.html.index')->with('group', $group)
         ->with('membres',$membres)->with('professor',$professor)
-        ->with('subject',$subject);
+        ->with('subject',$subject)->with('project',$project);
     
     }
 
@@ -55,8 +59,10 @@ class GroupController extends Controller
 
     public function taches(){
 
-        $tasks = Task::where('state','yet')->get();
-        $done_tasks = Task::where('state','done')->get();
+        $group = Auth::guard('groups')->user();
+
+        $tasks = Task::where('state','yet')->where('group_id', $group->id)->get();
+        $done_tasks = Task::where('state','done')->where('group_id', $group->id)->get();
         $group = Auth::guard('groups')->user();
         
         return view('dashboard.group.src.html.taches')->with('group', $group)

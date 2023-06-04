@@ -89,7 +89,7 @@
             <tr class="groupe-item" data-filiere="Filière" data-niveau="Niveau">
               <td class="border-bottom-0">
                 <h6 class="fw-semibold mb-0">
-                  <a class="custom-link" href="uniquegrp"><i class="ti ti-edit"></i>{{$group->id}}</a>
+                  <a class="custom-link" href="uniquegrp/{{$group->id}}"><i class="ti ti-edit"></i>{{$group->id}}</a>
                 </h6>
               </td>
               <td class="border-bottom-0">

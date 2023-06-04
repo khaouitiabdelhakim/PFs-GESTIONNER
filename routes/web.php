@@ -57,6 +57,8 @@ Route::group(['middleware' => ['student_logged_in']], function() {
 
     Route::post('student/change', [StudentController::class, 'saveChanges'])->name('student.change');
 
+    Route::post('student/chat', [StudentController::class, 'sendMessage'])->name('student.send');
+
 });
 
 
@@ -111,6 +113,8 @@ Route::group(['middleware' => ['group_logged_in']], function() {
 
     Route::get('admin/uniquestudent/{student}', [AdminController::class, 'student']);
 
+    Route::get('admin/uniquegrp/{group}', [AdminController::class, 'group']);
+
     //groupes info addstudent addprof
     Route::get('admin/groupes', [AdminController::class, 'groupes']);
     
@@ -145,6 +149,7 @@ Route::group(['middleware' => ['group_logged_in']], function() {
 
     Route::post('prof/change', [AdminController::class, 'saveProfessorChanges'])->name('prof.change');
     
+    Route::post('group/change', [AdminController::class, 'saveGroupChanges'])->name('group.change');
   
 
 });
@@ -206,6 +211,7 @@ Route::group(['middleware' => ['professor_logged_in']], function() {
     Route::get('/professor-logout', [AuthenticationController::class, 'logoutProfessor'])->name('professor-logout');
   
 
+    Route::post('professor/chat', [ProfessorController::class, 'sendMessage'])->name('professor.send');
 });
 
 

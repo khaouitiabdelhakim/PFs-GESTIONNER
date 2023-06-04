@@ -15,12 +15,12 @@
     data-sidebar-position="fixed" data-header-position="fixed">
     
       <!-- the side bar -->
-      @include('dashboard.student.src.html.sidebar')
+      @include('dashboard.professor.src.html.sidebar')
 
     <!--  Main wrapper -->
     <div class="body-wrapper">
       <!-- the header -->
-    @include('dashboard.student.src.html.header')
+    @include('dashboard.professor.src.html.header')
 
       <div  class="xhat-box">
         <!--  Row 1 -->
@@ -38,7 +38,7 @@
         </div>
 
         @foreach ($messages as $message)
-        @if ($student->id == $message->user_id)
+        @if ($professor->id == $message->user_id)
  
         <!-- Sender Message-->
         <div class="message sender">
@@ -46,7 +46,13 @@
             <div class="bg-light rounded py-2 px-3 mb-2">
               <p class="text-small mb-0 text-muted">{{$message->message}}</p>
             </div>
-            <p class="small text-muted">{{ \Carbon\Carbon::parse($message['created_at'])->format('H:i')  }}</p>
+            <p class="small text-muted">{{$message->created_at}}</p>
+           
+
+
+          
+
+
           </div>
         </div>
 
@@ -57,7 +63,7 @@
             <div class="bg-primary rounded py-2 px-3 mb-2">
               <p class="text-small mb-0 text-white">{{$message->message}}</p>
             </div>
-            <p class="small text-muted">{{ \Carbon\Carbon::parse($message['created_at'])->format('H:i')  }}</p>
+            <p class="small text-muted">{{$message->created_at}}</p>
           </div>
         </div>
 
@@ -75,7 +81,7 @@
       </div>
 
       <!-- Typing area -->
-      <form style="margin:30px; border-radius:10px"  action="#" class="bg-light" method="post" action="{{ route('student.send') }}">
+      <form style="margin:30px; border-radius:10px"  action="#" class="bg-light" method="post" action="{{ route('professor.send') }}">
           @csrf
         <div style="border-radius:10px"  class="input-group">
           <input name="message" type="text" placeholder="Type a message" aria-describedby="button-addon2" class="form-control rounded-0 border-0 py-4 bg-light">

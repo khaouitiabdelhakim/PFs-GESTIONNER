@@ -69,7 +69,12 @@
                 <div class="card overflow-hidden">
                   <div class="card-body p-4">
                     <h5 class="card-title fw-semibold">Date de soutenance</h5>
-                    <p>le 13 Mai 2023</p>
+                    @if(count($subject) > 0)
+                    <p>le {{$project->date_soutenance}}</p>
+                    @else
+                    <p>non encore déterminé</p>
+                    @endif
+                    
 
                     <h5 class="card-title fw-semibold">Lieu de soutenance</h5>
                     <p>ENSIAS AMPHI 3</p>
