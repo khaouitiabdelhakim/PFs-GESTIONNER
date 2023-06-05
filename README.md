@@ -1,6 +1,4 @@
-![alt text](https://github.com/khaouitiabdelhakim/PFs-GESTIONNER/blob/master/screenshots/pfs%20gestionner.png)
-
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)]([https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE](https://www.youtube.com/watch?v=6NV4Cbw5DCI&t=67s&ab_channel=KHAOUITIMotion%7CABDELHAKIMKHAOUITI))
+[![IMAGE ALT TEXT HERE](https://github.com/khaouitiabdelhakim/PFs-GESTIONNER/blob/master/screenshots/pfs%20gestionner.png)]([https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE](https://www.youtube.com/watch?v=6NV4Cbw5DCI&t=67s&ab_channel=KHAOUITIMotion%7CABDELHAKIMKHAOUITI))
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
