@@ -59,3 +59,9 @@ then Go to link localhost:8000
 
 ## Watch it on YouTube
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/6NV4Cbw5DCI/0.jpg)](https://www.youtube.com/watch?v=6NV4Cbw5DCI)
+
+## for the article in french (pour le rapport voilà le lien)
+https://github.com/khaouitiabdelhakim/PFs-GESTIONNER/blob/master/documents/Rapport_PFA___Web_App_de_gestion_des_PFs.pdf
+
+## for the presentation here is the link
+https://github.com/khaouitiabdelhakim/PFs-GESTIONNER/blob/master/documents/Pr%C3%A9sentation%20du%20PFA%20Version%20finale.pdf
