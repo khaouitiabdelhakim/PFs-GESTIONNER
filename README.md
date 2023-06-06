@@ -59,3 +59,9 @@ then Go to link localhost:8000
 
 ## Watch it on YouTube
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/6NV4Cbw5DCI/0.jpg)](https://www.youtube.com/watch?v=6NV4Cbw5DCI)
+
+## for the article in french (pour le rapport voilà le lien)
+[embed]http://example.com/file.pdf[/embed]
+
+## for the presentation here is the link
+[embed]http://example.com/file.pdf[/embed]
