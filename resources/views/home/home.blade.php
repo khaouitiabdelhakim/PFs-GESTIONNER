@@ -712,7 +712,7 @@
 
     <!-- Fullpage - Copyright -->
     <div class="ln-copyright text-right">
-      <p>© 2020 Lana - All Rights Reserved - <a href="#!">Terms of Service</a></p>
+      <p>© 2023 PFS Gestionner - All Rights Reserved - <a href="#!">Terms of Service</a></p>
     </div>
 
     <!-- Documentation Modal -->

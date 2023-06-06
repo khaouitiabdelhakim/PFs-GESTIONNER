@@ -96,29 +96,27 @@
         
 </div>
 
-<script>
-  function togglePasswordVisibility() {
-    var passwordInput = document.getElementById("profPassword");
-    var passwordVisibilityIcon = document.getElementById("passwordVisibilityIcon");
-
-    if (passwordInput.type === "password") {
-      passwordInput.type = "text";
-      passwordVisibilityIcon.classList.remove("ti ti-eye");
-      passwordVisibilityIcon.classList.add("ti ti-eye-closed");
-    } else {
-      passwordInput.type = "password";
-      passwordVisibilityIcon.classList.remove("ti ti-eye-closed");
-      passwordVisibilityIcon.classList.add("ti ti-eye");
-    }
-  }
-
-</script>
 
 
 
       </div>
     </div>
   </div>
+
+  <!-- Add this script at the end of your HTML body -->
+<script>
+  // Scroll the chat box to the bottom
+  function scrollToBottom() {
+    var chatBox = document.querySelector('.chat-box');
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }
+
+  // Execute the scrollToBottom function on page load
+  window.addEventListener('load', function() {
+    scrollToBottom();
+  });
+</script>
+
 
   <script src="{!! url('styles/assets/libs/jquery/dist/jquery.min.js') !!}"></script>
   <script src="{!! url('styles/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') !!}"></script>

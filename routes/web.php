@@ -11,7 +11,6 @@ use App\Http\Controllers\PDFController;
 
 use App\Http\Controllers\TestController;
 
-use App\Http\Controllers\ProfessorRegisterController;
 
 use App\Http\Controllers\Auth\AuthenticationController;
 

@@ -63,7 +63,7 @@ class GroupController extends Controller
 
         $tasks = Task::where('state','yet')->where('group_id', $group->id)->get();
         $done_tasks = Task::where('state','done')->where('group_id', $group->id)->get();
-        $group = Auth::guard('groups')->user();
+      
         
         return view('dashboard.group.src.html.taches')->with('group', $group)
         ->with('tasks', $tasks)->with('done_tasks', $done_tasks);
