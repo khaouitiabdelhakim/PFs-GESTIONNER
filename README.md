@@ -40,7 +40,7 @@ The goal of this project is to design (using Merise) and develop a web applicati
 ```
 git clone https://github.com/khaouitiabdelhakim/PFs-GESTIONNER.git
 
-cd Final-Project
+cd PFs-GESTIONNER
 
 composer install
 
